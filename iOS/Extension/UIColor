@@ -1,3 +1,5 @@
+###### HEX TO COLOR
+
 extension UIColor {
     
     // hex to color
@@ -36,5 +38,15 @@ extension UIColor {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: opacity
         )
+    }
+}
+
+###### COLOR TO IMAGE
+extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
     }
 }
